@@ -1,0 +1,25 @@
+<!-- DIY requirements -->
+<dim>1</dim>
+
+<!-- block space arguments -->
+<nblocks>12800</nblocks>
+<npse_per_block>20</npse_per_block>
+<nbins_per_block>1</nbins_per_block>
+
+<!-- PISCES Fit options-->
+<plot_name>th34vsdm41</plot_name>
+<fit_samples>ncres30sel_numusel_fhc_neardet_fardet</fit_samples>
+<fit_data>numi</fit_data>
+<systematics>all</systematics>
+<blnNullHyp>false</blnNullHyp>
+<reproducible_seeds>false</reproducible_seeds>
+
+<nh>true</nh>
+<beam_mode>both</beam_mode>
+<decomp>prop</decomp>
+<options>abc</options>
+
+<npts_flush>1</npts_flush>
+
+<use_binlist>true</use_binlist>
+<binlist_file>binlist_th34vsdm41_numi_5000_20pse_10parts.txt</binlist_file>
