@@ -9,12 +9,13 @@ Check_Interval=$2
 
 shift; shift
 
-if [ $SLURM_LOCALID == 0 ]; then
-  /scratch1/checkpoint.sh $Check_Wait $Check_Interval &
-fi
-
 LDTMP=$LD_LIBRARY_PATH
 source /etc/profile.d/env.sh
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$LDTMP
+
+if [ $SLURM_LOCALID == 0 ]; then
+  /scratch1/fcscripts/checkpoint.sh $Check_Wait $Check_Interval &
+fi
 
 CMD=""
 while (( "$#" )); do
@@ -31,6 +32,6 @@ export LC_ALL=C
 unset LANGUAGE
 
 echo "SLURM: ${SLURM_JOB_ID} ${SLURM_PROCID} ${SLURM_NODEID} -- Started running CMD: ${CMD}"
-eval "LD_LIBRARY_PATH=/opt/glibc/lib:/opt/udiImage/modules/mpich:/opt/udiImage/modules/mpich/dep/lib:${LD_LIBRARY_PATH/'/mpich/lib'/}:/lib64:$LDTMP ${CMD}"
+eval "LD_LIBRARY_PATH=/opt/glibc/lib:/opt/udiImage/modules/mpich:/opt/udiImage/modules/mpich/dep/lib:${LD_LIBRARY_PATH/'/mpich/lib'/}:/lib64 ${CMD}"
 echo "--------------------------------------------"
 
